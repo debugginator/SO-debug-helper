@@ -17,9 +17,9 @@ is ctrl+alt+b
 class SearchStackOverflowCommand(sublime_plugin.TextCommand):
 
     # Url to which to append a query for searching stackoverflow
-    QUERY_URL = 'https://stackoverflow.com/search?tab=votes&q="'
+    QUERY_URL = 'https://stackoverflow.com/search?tab=votes&q='
     # Minimal answer score to append to the query
-    REQUIRED_SCORE = '"+score:3'
+    REQUIRED_SCORE = '+score:3'
 
     """
     Extracts an error from the build result panel and queryies stackoverflow
@@ -27,6 +27,11 @@ class SearchStackOverflowCommand(sublime_plugin.TextCommand):
     """
     def run(self, edit):
         panel = sublime.active_window().find_output_panel("exec")
+        if (panel is None):
+            sublime.error_message("First build a file using the default " +
+                                  "build tool, then run the debug helper in " +
+                                  "case that build was unsuccessful.")
+
         traceback = panel.substr(sublime.Region(0, panel.size()))
         error_line = self.parseTraceback(traceback)
         self.getBestAnswer(error_line)
@@ -39,13 +44,16 @@ class SearchStackOverflowCommand(sublime_plugin.TextCommand):
     """
     def parseTraceback(self, traceback):
         p = re.compile(r'^(.*Error:.*)$\n\[Finished', re.MULTILINE)
-        return p.findall(traceback)[0]
+        return p.findall(traceback)[0] \
+                .replace('"', '') \
+                .replace('[', '') \
+                .replace(']', '')
 
     """
     Opens a web browser searching stackoverflow for the @param error.
     """
     def getBestAnswer(self, error):
-        custom_url = self.QUERY_URL + error + self.REQUIRED_SCORE
+        custom_url = self.QUERY_URL + error  # + self.REQUIRED_SCORE
         import webbrowser
         webbrowser.open(custom_url)
         # print(custom_url)
