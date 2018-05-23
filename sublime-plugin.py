@@ -35,19 +35,23 @@ class SearchStackOverflowCommand(sublime_plugin.TextCommand):
         traceback = panel.substr(sublime.Region(0, panel.size()))
         error_line = self.parseTraceback(traceback)
         self.getBestAnswer(error_line)
-        # panel.insert(edit, panel.size(), "\n"+best_answer)
 
     """ Returns an extracted error line from the traceback
 
     Uses a regular expression to extract the line that will be used for
-    querying stackoverflow.
+    querying stackoverflow. Tested for python, java, c, c++.
     """
     def parseTraceback(self, traceback):
-        p = re.compile(r'^(.*Error:.*)$\n\[Finished', re.MULTILINE)
-        return p.findall(traceback)[0] \
-                .replace('"', '') \
-                .replace('[', '') \
-                .replace(']', '')
+        regex = re.compile(r'[Ee]rror: (.*)')
+
+        try:
+            error = regex.findall(traceback)[0]
+        except:
+            sublime.error_message("Couldn't find an error in your last build.")
+
+        return error.replace('"', '') \
+                    .replace('[', '') \
+                    .replace(']', '')
 
     """
     Opens a web browser searching stackoverflow for the @param error.
@@ -56,10 +60,3 @@ class SearchStackOverflowCommand(sublime_plugin.TextCommand):
         custom_url = self.QUERY_URL + error  # + self.REQUIRED_SCORE
         import webbrowser
         webbrowser.open(custom_url)
-        # print(custom_url)
-        # import requests
-        # answers = requests.get(custom_url)
-        # import urllib.request
-        # response = urllib.request.urlopen(custom_url)
-        # html = response.read()
-        # print(html)
