@@ -1,0 +1,3 @@
+[
+	{ "keys": ["ctrl+alt+b"], "command": "stackoverflow_debug_helper" },
+]

@@ -14,7 +14,7 @@ is ctrl+alt+b
 """
 
 
-class StackOverflowDebugHelperCommand(sublime_plugin.TextCommand):
+class StackoverflowDebugHelperCommand(sublime_plugin.TextCommand):
 
     # Url to which to append a query for searching stackoverflow
     QUERY_URL = 'https://stackoverflow.com/search?tab=votes&q='

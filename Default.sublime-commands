@@ -1,0 +1,6 @@
+[
+    {
+        "command": "stackoverflow_debug_helper",
+        "caption": "Search Stack Overflow for a build error"
+    },
+]
