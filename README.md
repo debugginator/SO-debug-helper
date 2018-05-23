@@ -1,6 +1,6 @@
 # SO-debug-helper
 
-This is a plugin for sublime text 3, which can be run after an unsuccessful build to search StackOverflow for error that occured.
+This is a plugin for sublime text 3, which can be run after an unsuccessful build to search StackOverflow for the error that occured.
 
 ## Getting Started
 
