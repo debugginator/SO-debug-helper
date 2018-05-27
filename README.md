@@ -1,7 +1,12 @@
 # Stack Overflow Debug Helper
 
 This is a plugin for sublime text 3, which can be run after an unsuccessful build to search StackOverflow for the error that occured. 
-It has been tested for these programming languages:
+
+<img src="https://raw.githubusercontent.com/bahi-2/SO-debug-helper/master/docs/debugHelper_demo.gif" width="848">
+
+## Language support
+
+The plugin has been tested for these programming languages:
 ```
 C
 C++
