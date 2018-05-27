@@ -54,3 +54,13 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * Eric Martel for the idea of opening a tab in a web browser (https://github.com/ericmartel/Sublime-Text-2-Stackoverflow-Plugin)
+
+---------------------------
+
+## Donate
+
+If you use the DebugHelper and feel it is making your coding life better and easier, please consider making a donation for all the coffee and beer involved in this project. Thank you!
+
+Donate via:
+
+* [**Paypal**](https://paypal.me/blazbagic)
