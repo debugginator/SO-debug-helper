@@ -47,8 +47,7 @@ Let [Sublime Package Manager](http://wbond.net/sublime_packages/package_control)
 
 ## Authors
 
-* **Blaž Bagić** - *Lead developer* - [bahi-2](https://github.com/bahi-2)
-* **Filip Jelić** - *Main contributor* - [fjelic96](https://github.com/fjelic96)
+* **Blaž Bagić** - *Developer* - [debugginator](https://github.com/debugginator)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
